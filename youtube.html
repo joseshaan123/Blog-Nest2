@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Sports Dashboard</title>
+    <link rel="stylesheet" href="youtube.css">
+</head>
+<body>
+
+<header>
+    YouTube Sports Dashboard
+</header>
+
+<div class="container">
+
+    <!-- Search Bar -->
+    <div class="search-area">
+        <input type="text" id="query" placeholder="Search sports... (football, cricket, UFC)">
+        <button onclick="searchVideos()">Search</button>
+    </div>
+
+    <!-- Category Buttons -->
+    <div class="categories">
+        <button onclick="fetchCategory('football highlights')">Football</button>
+        <button onclick="fetchCategory('cricket highlights')">Cricket</button>
+        <button onclick="fetchCategory('ufc fights')">UFC</button>
+        <button onclick="fetchCategory('nba highlights')">NBA</button>
+        <button onclick="fetchCategory('wwe wrestling')">WWE</button>
+        <button onclick="fetchCategory('tennis match')">Tennis</button>
+        <button onclick="fetchCategory('formula 1 race')">F1</button>
+    </div>
+
+    <!-- Video Grid -->
+    <div id="videos"></div>
+
+</div>
+
+<script>
+    // Your API Key
+    const API_KEY = "AIzaSyDAESeUgkZR7LUFCnFtV0JMZbcLmk-Llis";
+    const BASE_URL = "https://www.googleapis.com/youtube/v3/search";
+
+    // Load default videos
+    window.onload = () => {
+        fetchVideos("sports highlights");
+    };
+
+    // Search function
+    function searchVideos() {
+        const query = document.getElementById("query").value;
+        fetchVideos(query);
+    }
+
+    // Category button function
+    function fetchCategory(category) {
+        fetchVideos(category);
+    }
+
+    // Fetch videos from YouTube API
+    function fetchVideos(searchTerm) {
+        fetch(`${BASE_URL}?part=snippet&type=video&maxResults=12&videoCategoryId=17&q=${searchTerm}&key=${API_KEY}`)
+            .then(res => res.json())
+            .then(data => displayVideos(data.items))
+            .catch(err => console.error("Error fetching YouTube API:", err));
+    }
+
+    // Display videos
+    function displayVideos(videos) {
+        const container = document.getElementById("videos");
+        container.innerHTML = "";
+        videos.forEach(video => {
+            const videoId = video.id.videoId;
+            const title = video.snippet.title;
+
+            const card = `
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/${videoId}" allowfullscreen></iframe>
+                    <div class="title">${title}</div>
+                </div>
+            `;
+            container.innerHTML += card;
+        });
+    }
+</script>
+
+</body>
+</html>

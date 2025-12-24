@@ -1,0 +1,168 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #5E4242;
+}
+@font-face {
+    font-family: "Josephin";
+    src: url(JuliusSansOne-Regular.ttf);
+}
+@font-face {
+    font-family: "Libre";
+    src: url(LibreCaslonDisplay-Regular.ttf);
+}
+@font-face {
+    font-family: "inter";
+    src: url(Inter-VariableFont_opsz\,wght.ttf);
+}
+header{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 15px;
+    
+}
+h1{
+    font-family: "Josephin";
+    font-size: clamp(1.5rem,5vw, 2rem);
+    flex-grow: 1;
+    
+    color: white;
+    font-weight: 200;
+   
+}
+li{
+    display: flex;
+}
+.headerbtn{
+   background-color: #5E4242; 
+   font-family: "Josephin";
+   font-size: clamp(1.1rem,0.2vw, 3rem);
+   height: 30px;
+   border: #5E4242 0px solid;
+   padding-left: 10px;
+   padding-right: 10px;
+   
+
+   color: white;
+   font-weight: 300;
+}
+.headerbtn:hover{
+    background-color: rgba(255, 255, 255, 0.711);
+    color:black;
+    font-weight: 500;
+    z-index: -1;
+}
+.sidebar{
+    position: fixed;
+    height: 100vh;
+    width: 250px;
+    top: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.332);
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+    align-items: flex-start;
+    justify-content: flex-start;
+    
+    
+}
+.sidebar .headerbtn{
+    color: black;
+   
+    background-color:rgba(255, 255, 255, 0.548) ;
+
+}
+.menubutton{
+    display: none;
+}
+.container1{
+    background-color:rgba(255, 255, 255, 0.548) ;
+    width: 80%;
+    display: flex;
+    justify-self: center;
+    height: 35em;
+    border-radius: 50px;
+    margin-top: 40px;
+}
+@media(max-width:800px){
+    .hideOnMobile{
+        display: none;
+    }
+    .menubutton{
+        display: flex;
+    }
+
+}
+@media(max-width:400px){
+    .sidebar{
+        width: 100%;
+        display: flex;
+       align-items: center;
+    }
+
+}
+
+
+
+.container-1{
+    
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    
+
+}
+.in-container-1{
+    margin: 20px;
+    padding: 20px;
+    width: 500px;
+    background-color: rgba(255, 255, 255, 0.6);
+    height: 500px;
+    border-radius: 20px;
+}
+.in-container-1 h1{
+    text-align: center;
+}
+form{
+display: flex;
+flex-direction: column;
+width: 60%;
+align-self: center;
+justify-self:center ;
+gap: 30px;
+font-size: 1.5rem;
+margin-top: 30px;
+}
+
+input{
+    height: 35px;
+    border: 0 solid;
+    border-radius: 30px;
+}
+p{
+    font-size: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+.submit{
+    width: 5rem;
+    align-self: center;
+    border: 0 solid;
+   
+}
+.submit:hover{
+  width: 5rem;
+  align-self: center;
+  border: 0 solid;
+  background-color: #5e424200;
+  border: 2px solid #5e4242;
+  color: #5E4242;
+}

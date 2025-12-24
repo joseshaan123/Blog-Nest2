@@ -1,0 +1,345 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: #5E4242;
+}
+@font-face {
+    font-family: "Josephin";
+    src: url(JuliusSansOne-Regular.ttf);
+}
+@font-face {
+    font-family: "Libre";
+    src: url(LibreCaslonDisplay-Regular.ttf);
+}
+@font-face {
+    font-family: "inter";
+    src: url(Inter-VariableFont_opsz\,wght.ttf);
+}
+header{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 15px;
+}
+h1{
+    font-family: "Josephin";
+    font-size: clamp(1.5rem,5vw, 2rem);
+    flex-grow: 1;
+    
+    color: white;
+    font-weight: 200;
+   
+}
+li{
+    display: flex;
+}
+.headerbtn{
+   background-color: #5E4242; 
+   font-family: "Josephin";
+   font-size: clamp(1.1rem,0.2vw, 3rem);
+   height: 30px;
+   border: #5E4242 0px solid;
+   padding-left: 10px;
+   padding-right: 10px;
+   
+
+   color: white;
+   font-weight: 300;
+}
+.headerbtn:hover{
+    background-color: rgba(255, 255, 255, 0.711);
+    color:black;
+    font-weight: 500;
+    z-index: -1;
+}
+.sidebar{
+    position: fixed;
+    height: 100vh;
+    width: 250px;
+    top: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.332);
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+    align-items: flex-start;
+    justify-content: flex-start;
+    
+    
+}
+.sidebar .headerbtn{
+    color: black;
+   
+    background-color:rgba(255, 255, 255, 0.548) ;
+
+}
+.menubutton{
+    display: none;
+}
+.container1{
+    background-color:rgba(255, 255, 255, 0.548) ;
+    width: 80%;
+    display: flex;
+    justify-self: center;
+    height: 35em;
+    border-radius: 50px;
+    margin-top: 40px;
+}
+@media(max-width:800px){
+    .hideOnMobile{
+        display: none;
+    }
+    .menubutton{
+        display: flex;
+    }
+
+}
+@media(max-width:400px){
+    .sidebar{
+        width: 100%;
+        display: flex;
+       align-items: center;
+    }
+
+}
+.vid1 {
+  margin-left: 5rem;
+  height: 90%;
+  margin-top: 1.5rem;
+  width: 50%;
+ 
+}
+
+.in-container1{
+    width: 50%;
+    overflow: hidden;
+}
+.in-container1 h2{
+    font-size: clamp(3rem, 2vw, 1.2rem);
+    font-family: "Libre";
+    color: white;
+    font-weight: 300;
+    padding: 20px;
+      word-wrap: break-word; /* prevents long words from breaking layout */
+  overflow-wrap: break-word;
+   
+    
+}
+.in-container1 p{
+     font-size: clamp(1.4rem, 2vw, 3rem);
+    font-family:"inter";
+    color: white;
+    font-weight: 200;
+    padding: 20px;
+   word-wrap: break-word; /* prevents long words from breaking layout */
+  overflow-wrap: break-word;
+    
+}
+.container2{
+    display: flex;
+    overflow: hidden; 
+  border-radius: 40px; 
+    margin: 20px;
+    width: 80%;
+    min-height: 90vh;
+   align-self: flex-start;
+    justify-self: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+}
+.container2 h2{
+   flex-grow: 0.2;
+   font-family: "Josephin";
+   text-align: center;
+   font-size: 2.5rem;
+}
+.container2 p{
+    color: white;
+    flex-grow: 0;
+    font-size: 2rem;
+    font-family: "Josephin";
+    text-align: center;
+    background-size: 100% 100%;
+    background-image: url('/frontend/videos/6781547-uhd_3840_2160_30fps.mp4');
+}
+.container2 button{
+    color: white;
+    background-color: rgba(255, 255, 255, 0);
+    width: 10%;
+    height: 5%;
+    border: 2px white solid;
+    font-size: 1.5rem;
+   font-family:"Josephin" ;
+   margin: 0 auto;
+}
+.container2vid{
+     background-size: 100% 100%;
+    background-image: url('/frontend/videos/6781547-uhd_3840_2160_30fps.mp4');
+position: absolute;
+top: 0;
+left: 0;
+min-width: 100%;
+min-height: 100%;
+
+z-index: -1;
+ object-position: center;
+ border-radius: 40px;
+ filter: brightness()
+}
+.container3{
+    width: 100%;
+    height: 100vh;
+    background-color: black;
+}
+.container3 h2{
+font-size: clamp(2rem, 2rem, 1.5rem);
+text-align: center;
+padding-top: 25px;
+
+}
+.in-container3{
+    border-radius: 20px;
+    display: flex;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.407);
+    backdrop-filter: blur(50px);
+    height: 80%;
+    justify-self: center;
+    flex-direction: column;
+    padding: 20px;
+    margin-top: 20px;
+}
+.in-container3-content-img{
+    height:60px;
+    width:200px;
+}
+.in-container3-h3{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    font-size: clamp(2rem, 2rem, 1.5rem)
+}
+.in-container3-content{
+   display: grid;
+   grid-template-columns:50% 50% ;
+    color: white;
+    flex-direction: row;
+    text-align: center;
+    font-size: clamp(2rem, 2rem, 1.5rem);
+     font-family: "Libre";
+    text-align: start;
+    width: 100%;
+    height: 75%;
+    overflow: hidden;
+    margin-top: 20px;
+    gap: 20px;
+}
+.in-container3-content-img{
+display: flex;
+flex-direction: column;
+width:100%;
+height: 100%;
+gap: 20px;
+}
+.in-container3-content-img img{
+width:100%;
+
+
+}
+.in-container3-content-p{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  
+}
+.in-container3-content-p p{
+ width: fit-content;
+}
+.container4{
+ display: flex;
+ height: 100vh;
+ width: 100%;   
+ align-items: center;
+ justify-content: center;
+}
+.in-container4{
+  background-image: url('/frontend/images/container4bg.jpg');
+  background-size: 100% 100%;
+   width: 80%;
+  
+   height: 90vh; 
+   border-radius: 50px;
+   background-color: aliceblue;
+   gap: 0;
+}
+.in-container4::before{
+
+    background: rgba(0,0,0,0.5);
+    z-index: 1;
+}
+.in-container4 h1{
+font-size: 2rem;
+text-align: center;
+margin-top: 20px;
+color: rgb(255, 255, 255);
+height: 200px;
+
+
+
+}
+.in-container4-sub{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.in-container4-sub h1{
+    font-size: 2.5rem;
+    filter: brightness(100%);
+    color: white;
+    text-align: left;
+    width: 400px;
+    margin-left: 20px;
+}
+.in-container4-boxes{
+ display: flex;
+ flex-direction: row;
+ overflow-x: scroll;
+ gap: 20px;
+
+}
+@keyframes scroll{
+     0%   { transform: translateX(0); }
+  100% { transform: translateX(-4600px); }
+} 
+.in-container4-boxes div{
+    background-color: #5E4242;
+    width: 400px;
+    flex-shrink: 0;
+     animation: scroll 20s linear infinite;
+}
+.container5{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+.container5 h1{
+   margin: 10px;
+   font-size: 50px;
+}
+.in-container5{
+ display:flex;
+    flex-direction: row ;
+    width: 80%;
+    justify-self: center;
+    overflow-x: scroll;
+    gap: 100px;
+    align-self: center;
+}

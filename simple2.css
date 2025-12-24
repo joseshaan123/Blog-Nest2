@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+  background: #4169e1;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card-container {
+  width: 340px;
+  height: 420px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 25px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.4);
+}
+
+.cards {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  transition: transform 0.6s ease-in-out;
+}
+
+.card {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 50px; /* space between card slides */
+}
+
+.card img {
+  width: 200px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.card h2 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: white;
+  line-height: 1.4;
+}
+
+.next-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.3);
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+}

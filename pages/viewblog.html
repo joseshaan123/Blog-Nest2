@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>View Blog</title>
+    <link rel="stylesheet" href="./profile.css">
+</head>
+<body>
+    <div class="container" style="max-width: 800px; margin: 50px auto; padding: 20px; font-family: sans-serif;">
+        <button onclick="window.history.back()" style="cursor:pointer; padding: 8px 15px; border-radius: 5px; border: 1px solid #ccc;">← Back</button>
+        
+        <h1 id="blog-title" style="margin-top: 20px;">Loading...</h1>
+        <p>By: <span id="blog-author" style="font-weight: bold; color: #555;"></span></p>
+        <hr>
+        <div id="blog-content" style="white-space: pre-wrap; line-height: 1.6; font-size: 18px; margin-top: 20px;"></div>
+    </div>
+
+    <script src="./viewblog.js" defer></script>
+</body>
+</html>
