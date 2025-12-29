@@ -10,8 +10,8 @@
     <header>
     <h1>BLOG<br>NEST</h1>
     <nav>
-    <a href="" class="hideOnMobile"><button class="headerbtn" id="head1" >login</button></a>
-    <a href="" class="hideOnMobile"><button class="headerbtn" id="head2" >Sign up</button></a>
+    <a href="signin.html" class="hideOnMobile"><button class="headerbtn" id="head1" >login</button></a>
+    <a href="signin.html" class="hideOnMobile"><button class="headerbtn" id="head2" >Sign up</button></a>
     <a href="" class="hideOnMobile"><button class="headerbtn" id="head3" >About Us</button></a>
     <a href="" class="hideOnMobile"><button class="headerbtn" id="head4" >Contact Us</button></a>
     <a href="#" ><button  class="menubutton" onclick=showSidebar()><svg xmlns="http://www.w3.org/2000/svg" height="24" width="40" viewBox="0 0 24 24" fill="currentColor">
@@ -37,7 +37,7 @@
     <video autoplay loop muted playsinline  src="/frontend/videos/ANY.mp4" class="vid1"></video>
      <hr>
      <div class="in-container1">
-        <h2>The Space for your ideas & your thoughs</h2>
+        <h2>The Space for your ideas & your thoughts</h2>
         <p>Welcome to BlogNest, your cozy corner on the internet where ideas take flight!  Here, every writer, dreamer, and thinker can create, share, and grow their stories freely. Whether you’re expressing emotions, sharing experiences, or inspiring others.</p>
      </div>
 </div>
@@ -48,7 +48,7 @@
     <button>Sign Up</button>
     <p>ALDREADY EXISTING USER?</p>
     <button>Login</button>
-    <video  autoplay muted loop class="container2vid"><source src="/frontend/videos/6781547-uhd_3840_2160_30fps.mp4"></video>
+    <video  autoplay muted loop class="bg-video"><source src="/frontend/videos/6781547-uhd_3840_2160_30fps.mp4"></video>
 </div>
 
 <div class="container4">
@@ -86,29 +86,35 @@
   </div>
 </div>
 
-<div class="container3">
-     <h2>WHY CHOOSE BLOG NEST?</h2>
-    <div class="in-container3">
-            <div class="in-container3-h3">
-            <h3>Edit Anytime</h3>
-            <h3>Engage With Others</h3>
-            <h3>Discover with others</h3>
-            </div>
-             <div class="in-container3-content">
-            <div class="in-container3-content-img">
-            <img src="/frontend/images/pexels-kampus-6829512 (1).jpg" alt="">
-            <img src="/frontend/images/pexels-kampus-6829512 (1).jpg" alt="">
-            <img src="/frontend/images/pexels-kampus-6829512 (1).jpg" alt="">
-            </div>
-            <div class="in-container3-content-p">
-            <p>Your blogs are always under your control. Made a typo? Changed your mind? No problem! BlogNest lets you revisit, update, or even delete your blogs anytime you wish. With full editing freedom, you can keep your content fresh, relevant, and exactly how you want it to be.</p>
-            <p>Your blogs are always under your control. Made a typo? Changed your mind? No problem! BlogNest lets you revisit, update, or even delete your blogs anytime you wish. With full editing freedom, you can keep your content fresh, relevant, and exactly how you want it to be.</p>
-            <p>Your blogs are always under your control. Made a typo? Changed your mind? No problem! BlogNest lets you revisit, update, or even delete your blogs anytime you wish. With full editing freedom, you can keep your content fresh, relevant, and exactly how you want it to be.</p>
+<div class="container3 reveal">
+    <h2>WHY CHOOSE BLOG NEST?</h2>
+    
+    <div class="why-choose-us-box">
+        <div class="content-stage">
             
-           </div>
+            <div class="slot image-slot">
+                <img id="blog-img" src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg" alt="Blog Feature">
             </div>
+            
+            <div class="text-group">
+                <div class="slot head-slot">
+                    <h1 id="blog-head">Edit Anytime</h1>
+                </div>
+                <div class="slot para-slot">
+                    <p id="blog-para">
+                        Your blogs are always under your control. Made a typo? Changed your mind? No problem! BlogNest lets you revisit, update, or even delete your blogs anytime you wish. With full editing freedom, you can keep your content fresh, relevant, and exactly how you want it to be.
+                    </p>
+                </div>
             </div>
+        </div>
+
+        <div class="arrow-control">
+            <button id="next-blog" class="round-arrow">
+                <span>↓</span>
+            </button>
+        </div>
     </div>
+</div>
     
 
 </div>
@@ -131,22 +137,23 @@
   <H1>Contact Us</H1>
   
   <div class="in-container6">
-    
+    <img src="/frontend/images/Frame 8.png" alt="">
 
+    <form action="">
+      <label for="">Name</label>
+      <input type="text">
+      <label for="">Email</label>
+      <input type="email">
+      <label for="">Your Comments</label>
+      <input type="text" id="comment">
+    </form>
   </div>
 
 </div>
     
- <script>
-    function showSidebar(){
-      const sidebar=document.querySelector(".sidebar")
-      sidebar.style.display='flex'
-    }
+ <script src="index.js">
+ 
 
-    function hideSidebar(){
-       const sidebar=document.querySelector(".sidebar")
-      sidebar.style.display='none' 
-    }
 
  </script>
     

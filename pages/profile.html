@@ -6,11 +6,11 @@
     <link rel="stylesheet" href="profile.css">
 </head>
 <body>
-   <div class="search-container" style="position: relative; margin: 20px auto; width: 300px;">
+<div class="search-profile">
+   <div class="search-container">
     <div style="display: flex; gap: 5px;">
-        <input type="text" id="user-search-input" placeholder="Search users or blogs..." 
-               style="padding: 8px; width: 100%; border-radius: 4px; border: 1px solid #ccc;">
-        <button id="search-btn" style="padding: 8px 15px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
+        <input type="text" id="user-search-input" placeholder="Search users or blogs..." >
+        <button id="search-btn" >
             Search
         </button>
     </div>
@@ -18,7 +18,7 @@
     <div id="search-results" style="display: none; position: absolute; top: 100%; left: 0; right: 0; background: white; border: 1px solid #ddd; border-top: none; z-index: 1000; box-shadow: 0 4px 8px rgba(0,0,0,0.1);color: black;">
     </div>
 </div>
-</div>
+
 <div class="profile-container">
     <img src="default-profile.png" alt="Profile" id="profile-trigger" onclick="toggleDropdown()">
 
@@ -33,9 +33,11 @@
         <button id="logout-btn" onclick="logoutUser()">Logout</button>
     </div>
 </div>
-    <h2>Welcome, <span id="display-username"></span></h2>
-<p>Email: <span id="display-email"></span></p>
-    <a href="texteditor.html"><button id="createBlogBtn" >Create Blog</button></a>
+</div>
+</div>
+    <h2 class="name-user">Welcome, <span id="display-username"></span></h2>
+
+    <a href="texteditor.html" ><button id="blog-create" >Create Blog +</button></a>
 
     <h2>Your Blogs</h2>
     <div id="blogsContainer">

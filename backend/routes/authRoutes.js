@@ -110,3 +110,25 @@ router.put("/update/:id", async (req, res) => {
         res.status(500).json({ message: "Server error during update" });
     }
 });
+
+router.put("/update/:id", async (req, res) => {
+    try {
+        const { fullName, email, dob, username, password } = req.body;
+        
+        const updateFields = { fullName, email, dob, username };
+        if (password) updateFields.password = password;
+
+        const user = await User.findByIdAndUpdate(
+            req.params.id, 
+            updateFields, 
+            { new: true }
+        );
+
+        if (!user) return res.status(404).json({ message: "User not found" });
+
+        res.status(200).json({ message: "Updated", user });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Server error during update" });
+    }
+});

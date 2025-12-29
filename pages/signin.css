@@ -3,24 +3,24 @@
     padding: 0;
 }
 body{
-    background-color:  #5E4242;
+    background-color: rgba(0, 0, 0, 0.805);
     
    
 }
 body{
-    background-color: #5E4242;
+    background-color: rgba(0, 0, 0, 0.805);
 }
 @font-face {
     font-family: "Josephin";
-    src: url(JuliusSansOne-Regular.ttf);
+    src: url("/frontend/fonts/JuliusSansOne-Regular.ttf");
 }
 @font-face {
     font-family: "Libre";
-    src: url(LibreCaslonDisplay-Regular.ttf);
+    src: url("/frontend/fonts/LibreCaslonDisplay-Regular.ttf");
 }
 @font-face {
     font-family: "inter";
-    src: url(Inter-VariableFont_opsz\,wght.ttf);
+    src: url("/frontend/fonts/Inter-VariableFont_opsz\,wght.ttf");
 }
 header{
     display: flex;
@@ -40,18 +40,20 @@ h1{
 li{
     display: flex;
 }
+#headerdiv{
+display: flex;
+gap: 20px;
+}
 .headerbtn{
    background-color: #5E4242; 
    font-family: "Josephin";
-   font-size: clamp(1.1rem,0.2vw, 3rem);
-   height: 30px;
-   border: #5E4242 0px solid;
-   padding-left: 10px;
-   padding-right: 10px;
-   
-
+   font-size: 15px;
+   height: fit-content;
+   border:  0px solid;
+   padding: 10px;
    color: white;
-   font-weight: 300;
+   font-weight: 200;
+   
 }
 .headerbtn:hover{
     background-color: rgba(255, 255, 255, 0.711);
@@ -107,7 +109,18 @@ li{
     .sidebar{
         width: 100%;
         display: flex;
-       align-items: center;
+        align-items: center;
+    }
+    .sidebar #close{
+        
+        color: #5E4242;
+        /* THIS IS THE KEY */
+        align-self: flex-start; 
+        
+        /* Optional: Add some padding/margin so it's not touching the very edge */
+        margin-left: 200px;
+        margin-top: 10px;
+        cursor: pointer;
     }
 
 }
@@ -139,6 +152,7 @@ li{
     flex-direction: column;
     gap: 10px;
 }
+
 #formLogin form{
     display: flex;
     flex-direction: column; 
@@ -146,9 +160,16 @@ li{
    align-self: center;
    
 }
+#formLogin label{
+font-family: "inter";
+}
 #formLogin h1, p{
     text-align: center;
     color: black;
+    font-family: "Josephin";
+}
+#formLogin p{
+    font-size: 15px;
 }
 
 #formLogin input{
@@ -158,11 +179,16 @@ li{
     border-radius: 20px;
     border: 1px solid #5E4242;
 }
+
 #formSignUp{
     margin-top: 40px;
     display: flex;
     flex-direction: column;
     text-align: center;
+}
+#formSignUp p{
+    margin-top: 10px;
+    font-size: 15px;
 }
 #formSignUp form{
      display: flex;
@@ -173,6 +199,9 @@ li{
     height: fit-content;
    
 }
+#formSignUp label{
+font-family: "inter";
+}
 #formSignUp input{
     padding: 0 0 0 10px;
      height: 30px;
@@ -182,4 +211,20 @@ li{
 }
 #formSignUp h1{
      color: black;
+}
+button{
+    align-self: center;
+    width: fit-content;
+    padding: 10px;
+    font-size: 15px;
+    background-color: #5E4242;
+    color: white;
+    border: 0;
+    border-radius: 20px;
+}
+
+button:hover{
+    background-color: rgba(255, 255, 255, 0);
+    color: #5E4242;
+    border: 2px solid #5E4242 ;
 }

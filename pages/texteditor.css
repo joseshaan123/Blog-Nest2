@@ -3,7 +3,7 @@
     padding: 0;
 }
 body{
-    background-color: #5E4242;
+    background-color: rgba(0, 0, 0, 0.805);
 }
 @font-face {
     font-family: "Josephin";
@@ -114,11 +114,13 @@ li{
 margin-top: 20px;
     height: fit-content;
     background-color: white;
+    overflow: hidden;
 }
 .options{
     display: flex;
     flex-wrap:wrap;
-    width: max-content;
+    width: fit-content;
+    
     justify-items: flex-start;
     align-items: center;
     gap: 15px;
@@ -216,3 +218,4 @@ width: 200px;
         .adv-option-button{
             width: fit-content;
         }
+        

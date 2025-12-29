@@ -12,8 +12,19 @@
      <header>
     <h1>BLOG<br>NEST</h1>
     <nav>
-    <a href="" class="hideOnMobile"><button class="headerbtn" id="head1" >login</button></a>
-    <a href="" class="hideOnMobile"><button class="headerbtn" id="head2" >Sign up</button></a>
+    <div class="profile-container">
+    <img src="default-profile.png" alt="Profile" id="profile-trigger" onclick="toggleDropdown()">
+
+    <div id="profile-dropdown" class="dropdown-content">
+        <div class="user-info">
+            <p id="menu-username">Username</p>
+            <p id="menu-email">email@example.com</p>
+        </div>
+        <hr>
+        <a href="profile.html">My Profile</a>
+        <a href="edit-profile.html">Edit Profile</a>
+        <button id="logout-btn" onclick="logoutUser()">Logout</button>
+    </div>
     <a href="" class="hideOnMobile"><button class="headerbtn" id="head3" >About Us</button></a>
     <a href="" class="hideOnMobile"><button class="headerbtn" id="head4" >Contact Us</button></a>
     <a href="#" ><button  class="menubutton" onclick=showSidebar()><svg xmlns="http://www.w3.org/2000/svg" height="24" width="40" viewBox="0 0 24 24" fill="currentColor">
@@ -34,6 +45,9 @@
     <a href=""><button class="headerbtn" id="head2">Contact Us</button></a>
     
     </nav>
+   <h1>
+    Your Ideas to Text
+   </h1>
   <div class="container-0">
     <button id="bold" class="option-button format">
         <i class="fa fa-bold" aria-hidden="true"></i>
@@ -120,8 +134,19 @@
         <option value="H6">Heading 6</option>
     </select>
 
-    <select name="" id="fontName" class="adv-option-button"></select>
-    <select name="" id="fontSize" class="adv-option-button"></select>
+    <select name="" id="fontName" class="adv-option-button">
+       <option> Arial</option>
+       <option>Verdana </option>
+       <option> Times New Roman </option>
+       <option> 
+       Garamond
+       </option>
+       <option> Arial</option>
+
+    </select>
+    <select name="" id="fontSize" class="adv-option-button">
+        
+    </select>
 
     <div class="input-wrapper">
         <input type="color" id="foreColor" class="adv-option-button">
