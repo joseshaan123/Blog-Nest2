@@ -1,0 +1,234 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: rgba(0, 0, 0, 0.805);
+    
+   
+}
+body{
+    background-color: rgba(0, 0, 0, 0.805);
+}
+@font-face {
+    font-family: "Josephin";
+    src: url("/frontend/fonts/JuliusSansOne-Regular.ttf");
+}
+@font-face {
+    font-family: "Libre";
+    src: url("/frontend/fonts/LibreCaslonDisplay-Regular.ttf");
+}
+@font-face {
+    font-family: "inter";
+    src: url("/frontend/fonts/Inter-VariableFont_opsz\,wght.ttf");
+}
+header{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 15px;
+}
+h1{
+    font-family: "Josephin";
+    font-size: clamp(1.5rem,5vw, 2rem);
+    flex-grow: 1;
+    
+    color: white;
+    font-weight: 200;
+   
+}
+li{
+    display: flex;
+}
+#headerdiv{
+display: flex;
+gap: 20px;
+}
+.headerbtn{
+   background-color: #5E4242; 
+   font-family: "Josephin";
+   font-size: 15px;
+   height: fit-content;
+   border:  0px solid;
+   padding: 10px;
+   color: white;
+   font-weight: 200;
+   
+}
+.headerbtn:hover{
+    background-color: rgba(255, 255, 255, 0.711);
+    color:black;
+    font-weight: 500;
+    z-index: -1;
+}
+.sidebar{
+    position: fixed;
+    height: 100vh;
+    width: 250px;
+    top: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.332);
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+    align-items: flex-start;
+    justify-content: flex-start;
+    
+    
+}
+.sidebar .headerbtn{
+    color: black;
+   
+    background-color:rgba(255, 255, 255, 0.548) ;
+
+}
+.menubutton{
+    display: none;
+}
+.container1{
+    background-color:rgba(255, 255, 255, 0.548) ;
+    width: 80%;
+    display: flex;
+    justify-self: center;
+    height: 35em;
+    border-radius: 50px;
+    margin-top: 40px;
+}
+@media(max-width:800px){
+    .hideOnMobile{
+        display: none;
+    }
+    .menubutton{
+        display: flex;
+    }
+
+}
+@media(max-width:400px){
+    .sidebar{
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+    .sidebar #close{
+        
+        color: #5E4242;
+        /* THIS IS THE KEY */
+        align-self: flex-start; 
+        
+        /* Optional: Add some padding/margin so it's not touching the very edge */
+        margin-left: 200px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+}
+.container{
+        display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+
+}
+#container1{
+    background-color: white;
+    width: 400px;
+     box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+     border-radius: 20px;
+       transition: height 0.9s ease;
+    overflow: hidden;
+    padding: 20px;
+    margin: 20px;
+    
+   
+}
+#sliding-container{
+    width: 100%;
+    position: relative;
+    transition: transform 0.4s ease;
+    
+}
+#formLogin{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+#formLogin form{
+    display: flex;
+    flex-direction: column; 
+    gap: 10px;
+   align-self: center;
+   
+}
+#formLogin label{
+font-family: "inter";
+}
+#formLogin h1, p{
+    text-align: center;
+    color: black;
+    font-family: "Josephin";
+}
+#formLogin p{
+    font-size: 15px;
+}
+
+#formLogin input{
+
+    height: 30px;
+    width: 300px;
+    border-radius: 20px;
+    border: 1px solid #5E4242;
+}
+
+#formSignUp{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+#formSignUp p{
+    margin-top: 10px;
+    font-size: 15px;
+}
+#formSignUp form{
+     display: flex;
+    flex-direction: column;
+    text-align: start;
+    gap: 10px;
+    align-self: center;
+    height: fit-content;
+   
+}
+#formSignUp label{
+font-family: "inter";
+}
+#formSignUp input{
+    padding: 0 0 0 10px;
+     height: 30px;
+    width: 300px;
+    border-radius: 20px;
+    border: 1px solid #5E4242;
+}
+#formSignUp h1{
+     color: black;
+}
+button{
+    align-self: center;
+    width: fit-content;
+    padding: 10px;
+    font-size: 15px;
+    background-color: #5E4242;
+    color: white;
+    border: 0;
+    border-radius: 20px;
+}
+
+button:hover{
+    background-color: rgba(255, 255, 255, 0);
+    color: #5E4242;
+    border: 2px solid #5E4242 ;
+}
