@@ -1,8 +1,9 @@
 const express = require("express");
-const MongoStore = require("connect-mongo");
+const MongoStore = require("connect-mongo").default;
 const mongoose = require("mongoose");
 const cors = require("cors");
 const session = require("express-session");
+import cookieParser from "cookie-parser";
 require("dotenv").config();
 
 
@@ -10,11 +11,6 @@ const authRoutes = require("./routes/authRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 
 const app = express();
-
-// Middleware
-app.use(cors());
-app.use(express.json());
-
 app.use(
   session({
     name: "sid", // cookie name
@@ -32,6 +28,12 @@ app.use(
     },
   })
 );
+app.use(express.urlencoded({ extended: true }))
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(cookieParser());
+
 
 // Routes
 app.use("/api/auth", authRoutes);

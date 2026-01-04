@@ -38,7 +38,7 @@ router.post("/signup", async (req, res) => {
     }
 });
 
-router.post("/login",isAuth,async (req, res) => {
+router.post("/login",async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -60,6 +60,7 @@ router.post("/login",isAuth,async (req, res) => {
 
     req.session.userId = user._id;
     req.session.username = user.username;
+res.cookie("username", username, {})
 
     // 3. Success!
     res.status(200).json({ 
@@ -67,6 +68,8 @@ router.post("/login",isAuth,async (req, res) => {
         userId: user._id, 
         username: user.username 
     });
+
+
 
   } catch (err) {
     console.error(err);
@@ -100,7 +103,7 @@ router.get("/find/:username", async (req, res) => {
     }
 });
 
-router.get("/user/:id", async (req, res) => {
+router.get("/user/:id",isAuth ,async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         if (!user) return res.status(404).json({ message: "User not found" });
@@ -115,7 +118,8 @@ module.exports = router;
 router.put("/update/:id", async (req, res) => {
     try {
         const { username, email, bio } = req.body;
-        
+        const cookie = req.session||{}
+        console.log(cookie)
         // Update the user in MongoDB
         const updatedUser = await User.findByIdAndUpdate(
             req.params.id,
