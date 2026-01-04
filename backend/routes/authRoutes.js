@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require('bcrypt');
 const User = require("../models/User");
 const router = express.Router();
+const isAuth = require('../middleware/auth')
 
 /* --- 1. SIGNUP ROUTE (With Hashing) --- */
 router.post("/signup", async (req, res) => {
@@ -37,12 +38,12 @@ router.post("/signup", async (req, res) => {
     }
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login",isAuth,async (req, res) => {
   try {
     const { email, password } = req.body;
 
     // 1. Find the user by email
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).select("password");
     if (!user) {
       return res.status(400).json({ message: "User not found" });
     }
@@ -56,6 +57,9 @@ router.post("/login", async (req, res) => {
       // If it doesn't match, you get "Invalid password"
       return res.status(400).json({ message: "Invalid password" });
     }
+
+    req.session.userId = user._id;
+    req.session.username = user.username;
 
     // 3. Success!
     res.status(200).json({ 
@@ -98,7 +102,7 @@ router.get("/find/:username", async (req, res) => {
 
 router.get("/user/:id", async (req, res) => {
     try {
-        const user = await User.findById(req.params.id).select("username email");
+        const user = await User.findById(req.params.id);
         if (!user) return res.status(404).json({ message: "User not found" });
         res.json(user);
     } catch (err) {
@@ -106,6 +110,7 @@ router.get("/user/:id", async (req, res) => {
     }
 });
 module.exports = router;
+
 // Update User Profile
 router.put("/update/:id", async (req, res) => {
     try {

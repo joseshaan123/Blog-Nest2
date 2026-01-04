@@ -1,7 +1,10 @@
 const express = require("express");
+const MongoStore = require("connect-mongo");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const session = require("express-session");
 require("dotenv").config();
+
 
 const authRoutes = require("./routes/authRoutes");
 const blogRoutes = require("./routes/blogRoutes");
@@ -11,6 +14,24 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+app.use(
+  session({
+    name: "sid", // cookie name
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: process.env.MONGO_URI,
+      collectionName: "sessions",
+    }),
+    cookie: {
+      httpOnly: true,
+      secure: false, // set true in production with HTTPS
+      maxAge: 1000 * 60 * 60 * 24, // 1 day
+    },
+  })
+);
 
 // Routes
 app.use("/api/auth", authRoutes);
