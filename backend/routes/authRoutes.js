@@ -60,7 +60,11 @@ router.post("/login",async (req, res) => {
 
     req.session.userId = user._id;
     req.session.username = user.username;
-res.cookie("username", username, {})
+res.cookie("username", user.username, {
+        maxAge: 1000 * 60 * 15, 
+        httpOnly: true, 
+        
+    })
 
     // 3. Success!
     res.status(200).json({ 
@@ -103,7 +107,7 @@ router.get("/find/:username", async (req, res) => {
     }
 });
 
-router.get("/user/:id",isAuth ,async (req, res) => {
+router.get("/user/:id",async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
         if (!user) return res.status(404).json({ message: "User not found" });

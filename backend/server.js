@@ -3,7 +3,7 @@ const MongoStore = require("connect-mongo").default;
 const mongoose = require("mongoose");
 const cors = require("cors");
 const session = require("express-session");
-import cookieParser from "cookie-parser";
+const cookieParser= require("cookie-parser")
 require("dotenv").config();
 
 
@@ -30,7 +30,13 @@ app.use(
 );
 app.use(express.urlencoded({ extended: true }))
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://127.0.0.1:3000",
+    methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
