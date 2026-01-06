@@ -23,14 +23,16 @@
 </div>
 
 <div class="profile-container">
-    <img src="default-profile.png" alt="Profile" id="profile-trigger" onclick="toggleDropdown()">
-
+    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile" id="profile-trigger" onclick="toggleDropdown()">
+    
     <div id="profile-dropdown" class="dropdown-content">
         <div class="user-info">
             <p id="menu-username">Username</p>
             <p id="menu-email">email@example.com</p>
         </div>
         <hr>
+        <button id="add-photo-btn">Add Profile Picture</button>
+<input type="file" id="hidden-file-input" style="display: none;" accept="image/*">
         <a href="profile.html">My Profile</a>
         <a href="edit-profile.html">Edit Profile</a>
         <button id="logout-btn" onclick="logoutUser()">Logout</button>

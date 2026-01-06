@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const MongoStore = require("connect-mongo").default;
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -32,13 +33,15 @@ app.use(express.urlencoded({ extended: true }))
 // Middleware
 app.use(
   cors({
-    origin: "http://127.0.0.1:3000",
+    origin: "http://127.0.0.1:5502",
     methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
     credentials: true,
   })
 );
 app.use(express.json());
 app.use(cookieParser());
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 // Routes

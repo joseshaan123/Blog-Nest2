@@ -29,7 +29,7 @@ router.get("/user/:userId", async (req, res) => {
 
 // 3. CREATE
 router.post("/create", async (req, res) => {
-    try {
+    try { 
         const newBlog = new Blog(req.body);
         await newBlog.save();
         res.status(201).json({ message: "Saved" });

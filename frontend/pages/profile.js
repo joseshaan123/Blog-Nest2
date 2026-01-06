@@ -129,17 +129,19 @@ function logoutUser() {
 // Inside profile.js
 async function loadProfile() {
     const userId = localStorage.getItem("userId");
+    const response = await fetch(`http://localhost:3000/api/auth/user/${userId}`);
     
-    const res = await fetch(`http://localhost:3000/api/auth/user/${userId}`);
-    const user = await res.json();
-    
-    if(res.ok) {
-        // This updates the actual text on your profile page
-        document.getElementById("display-username").textContent = user.username;
-        document.getElementById("display-fullname").textContent = user.fullName;
+    // 1. You must define 'result' (or 'user') here!
+    const result = await response.json(); 
+
+    if (response.ok) {
+        const nameElement = document.getElementById('menu-username');
+        if (nameElement) {
+            // 2. Now 'result' exists, so this won't crash
+            nameElement.textContent = result.username; 
+        }
     }
 }
-loadProfile();
 
   function showSidebar(){
       const sidebar=document.querySelector(".sidebar")
@@ -151,3 +153,58 @@ loadProfile();
       sidebar.style.display='none' 
     }
 
+
+const addPhotoBtn = document.getElementById('add-photo-btn');
+const fileInput = document.getElementById('hidden-file-input');
+
+// 1. Trigger the file picker when the button is clicked
+addPhotoBtn.addEventListener('click', () => {
+    fileInput.click(); 
+});
+
+// 2. Handle the upload automatically when a file is selected
+fileInput.addEventListener('change', async () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    // Show a "Loading..." state on the button
+    addPhotoBtn.innerText = "Uploading...";
+
+    const userId = localStorage.getItem("userId");
+    const formData = new FormData();
+    formData.append("profilePic", file);
+
+    try {
+        const response = await fetch(`http://localhost:3000/api/auth/update/${userId}`, {
+            method: "PUT",
+            // Note: No 'Content-Type' header needed for FormData
+            body: formData
+        });
+
+        const result = await response.json();
+
+  if (response.ok) {
+            const result = await response.json();
+            
+            // Check what the result actually contains
+            console.log("Server Response:", result);
+
+            const profileImg = document.getElementById("profile-trigger");
+            if (profileImg && result.profilePic) {
+                // We MUST add the base URL (http://localhost:3000) 
+                // because the result is just a string like "/uploads/img.jpg"
+                profileImg.src = `http://localhost:3000${result.profilePic}`;
+                
+                // Save to localStorage so it stays there when you refresh
+                localStorage.setItem("userProfilePic", result.profilePic);
+            }
+            
+            alert("Profile picture updated!");
+        } // Closing the if (response.ok)
+    } catch (err) {
+        console.error("Upload error:", err);
+        alert("Something went wrong with the upload.");
+    } finally {
+        addPhotoBtn.innerText = "Add Profile Picture";
+    }
+});

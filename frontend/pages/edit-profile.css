@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+   background-color: rgba(0, 0, 0, 0.805);
+}
+@font-face {
+  font-family:"Julius";
+  src: url("/frontend/fonts/JuliusSansOne-Regular.ttf");
+}
+@font-face {
+  font-family:"libre";
+  src: url("/frontend/fonts/LibreCaslonDisplay-Regular.ttf");
+}
+@font-face {
+  font-family:"inter";
+  src: url("/frontend/fonts/Inter-VariableFont_opsz\,wght.ttf");
+}
+.signup-container{
+ width: 100%;  
+}
+h1{
+    text-align: center;
+    font-family:"Julius";
+    margin: 50px;
+    font-size: clamp(1.8rem,7vw,2.5rem);
+    color: white;
+}
+#editProfileForm{
+   display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content inside the box */
+    gap: 10px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 30px;
+    width: 80%;
+    min-width: 300px;
+    max-width: 400px;
+    justify-self: center;
+    margin: 20px;
+    
+}
+form label{
+    font-family:"inter";
+    font-size: clamp(1.2rem,5vw,1.5rem);
+}
+form input{
+    border-radius: 20px;
+    border: 1px solid #1dba3c;
+    height: fit-content;
+    padding: 5px;
+    font-size: clamp(0.7rem,3vw,1rem);
+}
+form button{
+    height: fit-content;
+    width: fit-content;
+    padding: 5px;
+    font-size: clamp(0.9rem,3vh,1.1rem);
+    align-self:center;
+    border-radius: 20px;
+    background-color: #1dba3c;
+    color: white;
+    border: 0;
+}
+
+form button:hover{
+  background-color: white;
+  color: #1dba3c;
+  transform: translateY(-5px);
+}
+
