@@ -181,7 +181,7 @@ fileInput.addEventListener('change', async () => {
             body: formData
         });
 
-        const result = await response.json();
+       
 
   if (response.ok) {
             const result = await response.json();

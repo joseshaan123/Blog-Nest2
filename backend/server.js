@@ -33,7 +33,7 @@ app.use(express.urlencoded({ extended: true }))
 // Middleware
 app.use(
   cors({
-    origin: "http://127.0.0.1:5502",
+    origin: true,
     methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
     credentials: true,
   })
