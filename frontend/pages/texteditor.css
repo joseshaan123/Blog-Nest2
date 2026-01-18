@@ -120,10 +120,10 @@ margin-top: 20px;
     display: flex;
     flex-wrap:wrap;
     width: fit-content;
-    
+    background-color: white;
     justify-items: flex-start;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 .button{
     height: 28px;
@@ -148,7 +148,7 @@ select{
 
 #text-input{
     margin-top: 40px;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.374);
     padding: 20px;
     height: fit-content;
     
@@ -376,3 +376,76 @@ width: 200px;
         
 }
         
+.profile-container {
+    position: relative;
+    display: flex;
+    justify-content:flex-end;
+    margin-right: 20px;
+}
+
+#profile-trigger {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #ddd;
+}
+
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    right: 0;
+    top: 50px;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 1000;
+    padding: 10px;
+}
+
+.dropdown-content.show {
+    display: block; /* Shown when triggered */
+}
+
+.user-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+#menu-username { font-weight: bold; }
+
+.dropdown-content a, .dropdown-content button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    text-decoration: none;
+    color: #333;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.dropdown-content a:hover, .dropdown-content button:hover {
+    background-color: #f1f1f1;
+}
+
+#logout-btn { color: red; font-weight: bold; }
+
+.action-button{
+transition: transform 2s ease-in-out;
+justify-self:end
+}
+.action-button svg{
+  width: 30px;
+  height: 30px;
+  color: white;
+}
+.result-box{
+    background-color: white;
+    font-size: clamp(0.1rem,4vw,1.2rem);
+    color: black;
+   font-family: "inter";
+}

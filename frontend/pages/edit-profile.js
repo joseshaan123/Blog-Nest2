@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const userId = localStorage.getItem("userId");
+    const userId = localStorage.getItem("id-user");
     console.log("Logged in User ID:", userId);
 
     if (!userId) {
@@ -10,10 +10,10 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // --- 1. FETCH AND FILL DATA ---
     try {
-        const res = await fetch(`http://localhost:3000/api/auth/user/${userId}`);
-        if (!res.ok) throw new Error("Could not find user in database");
+        const response = await fetch(`http://localhost:3000/api/auth/user/${userId}`);
+        if (!response.ok) throw new Error("Could not find user in database");
         
-        const user = await res.json();
+        const user = await response.json();
         console.log("User data loaded:", user);
 
         // This puts the DB info into your boxes
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             if (response.ok) {
                 // Update LocalStorage so the UI reflects the change
-                localStorage.setItem("username", updatedData.username);
+                localStorage.setItem("name-user", updatedData.username);
                 
                 alert("Update Successful! Redirecting now...");
                 window.location.href = "profile.html"; // The Redirect

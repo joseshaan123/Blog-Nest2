@@ -116,8 +116,8 @@ const highlighterRemover = (className) => {
 
 window.onload = initializer();
 document.addEventListener("DOMContentLoaded", async () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const editId = urlParams.get("edit");
+    const paramUrl = new URLSearchParams(window.location.search);
+    const editId = paramUrl.get("edit");
     
     if (editId) {
         document.getElementById("submit").textContent = "Update Blog";
@@ -129,8 +129,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 async function submitBlog() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const editId = urlParams.get("edit");
+    const paramUrl = new URLSearchParams(window.location.search);
+    const editId = paramUrl.get("edit");
 
     const blogData = {
         title: document.getElementById("heading-input").textContent.trim(),
@@ -175,53 +175,47 @@ const popup = document.getElementById("popupMenu");
     });
 
     async function callGemini(promptText) {
-        const apiKey = "AIzaSyDB2O692lk8UP2Mr7Iz_UajX0zBF13VZP4";  // <-- Replace with your Gemini 2.5 API key
-
-        const response = await fetch(
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + apiKey,
-            {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    contents: [
-                        {
-                            parts: [{ text: promptText }]
-                        }
-                    ]
-                })
-            }
-        );
+    try {
+        const response = await fetch("http://localhost:3000/api/auth/ask-ai", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ promptText: promptText })
+        });
 
         const data = await response.json();
         
-        try {
-            return data?.candidates[0]?.content?.parts[0]?.text || "No response.";
-        } catch (e) {
-            return "Error: " + JSON.stringify(data);
-        }
+        // If the backend sent an 'output', use it; otherwise show the error
+        return data.output || "Error: " + (data.error || "Unknown error");
+    } catch (e) {
+        console.error("Frontend Fetch Error:", e);
+        return "Connection failed. Is the server running?";
     }
+}
 
-    document.getElementById("fixGrammarBtn").onclick = async function () {
-        let selected = window.getSelection().toString();
-        popup.style.display = "none";
+// Your button logic remains the same!
+document.getElementById("fixGrammarBtn").onclick = async function () {
+    let selected = window.getSelection().toString();
+    if (!selected) return alert("Please select some text first!");
+    
+    popup.style.display = "none";
+    resultBox.style.display = "block";
+    resultBox.innerHTML = "Working on grammar...";
 
-        resultBox.style.display = "block";
-        resultBox.innerHTML = "Working on grammar…";
+    let output = await callGemini("Fix the grammar of this sentence only: " + selected);
+    resultBox.innerHTML = "<b>Grammar Fixed:</b><br><br>" + output;
+};
 
-        let output = await callGemini("Fix the grammar of this sentence only: " + selected);
-        resultBox.innerHTML = "<b>Grammar Fixed:</b><br><br>" + output;
-    };
+document.getElementById("rephraseBtn").onclick = async function () {
+    let selected = window.getSelection().toString();
+    if (!selected) return alert("Please select some text first!");
 
-    document.getElementById("rephraseBtn").onclick = async function () {
-        let selected = window.getSelection().toString();
-        popup.style.display = "none";
+    popup.style.display = "none";
+    resultBox.style.display = "block";
+    resultBox.innerHTML = "Rephrasing...";
 
-        resultBox.style.display = "block";
-        resultBox.innerHTML = "Rephrasing…";
-
-        let output = await callGemini("Rephrase this sentence in a clean and natural way: " + selected);
-        resultBox.innerHTML = "<b>Rephrased Sentence:</b><br><br>" + output;
-    };
+    let output = await callGemini("Rephrase this sentence in a clean and natural way: " + selected);
+    resultBox.innerHTML = "<b>Rephrased Sentence:</b><br><br>" + output;
+};
     function toggleDropdown() {
     const dropdown = document.getElementById("profile-dropdown");
     dropdown.classList.toggle("show");
@@ -259,3 +253,101 @@ function logoutUser() {
        const sidebar=document.querySelector(".sidebar")
       sidebar.style.display='none' 
     }
+
+  const addPhotoBtn = document.getElementById('add-photo-btn');
+const fileInput = document.getElementById('hidden-file-input');
+
+// 1. Trigger the file picker when the button is clicked
+addPhotoBtn.addEventListener('click', () => {
+    fileInput.click(); 
+});
+
+// 2. Handle the upload automatically when a file is selected
+fileInput.addEventListener('change', async () => {
+    const file = fileInput.files[0];
+    if (!file) return;
+
+    // Show a "Loading..." state on the button
+    addPhotoBtn.innerText = "Uploading...";
+
+    const userId = localStorage.getItem("userId");
+    const formData = new FormData();
+    formData.append("profilePic", file);
+
+    try {
+        const response = await fetch(`http://localhost:3000/api/auth/update/${userId}`, {
+            method: "PUT",
+            // Note: No 'Content-Type' header needed for FormData
+            body: formData
+        });
+
+       
+
+  if (response.ok) {
+            const result = await response.json();
+            
+            // Check what the result actually contains
+            console.log("Server Response:", result);
+
+            const profileImg = document.getElementById("profile-trigger");
+            if (profileImg && result.profilePic) {
+                // We MUST add the base URL (http://localhost:3000) 
+                // because the result is just a string like "/uploads/img.jpg"
+                profileImg.src = `http://localhost:3000${result.profilePic}`;
+                
+                // Save to localStorage so it stays there when you refresh
+                localStorage.setItem("userProfilePic", result.profilePic);
+            }
+            
+            alert("Profile picture updated!");
+        } // Closing the if (response.ok)
+    } catch (err) {
+        console.error("Upload error:", err);
+        alert("Something went wrong with the upload.");
+    } finally {
+        addPhotoBtn.innerText = "Add Profile Picture";
+    }
+});
+function toggleDropdown() {
+    const dropdown = document.getElementById("profile-dropdown");
+    dropdown.classList.toggle("show");
+    
+    // Fill the data from localStorage when opened
+    
+}
+
+// Close the dropdown if the user clicks anywhere else on the screen
+window.onclick = function(event) {
+    if (!event.target.matches('#profile-trigger')) {
+        const dropdowns = document.getElementsByClassName("dropdown-content");
+        for (let i = 0; i < dropdowns.length; i++) {
+            let openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+                openDropdown.classList.remove('show');
+            }
+        }
+    }
+}
+
+// Logout function
+function logoutUser() {
+    localStorage.clear(); // Clears user ID, email, etc.
+    window.location.href = "signin.html";
+}
+
+// Inside profile.js
+async function loadProfile() {
+    const userId = localStorage.getItem("userId");
+    const response = await fetch(`http://localhost:3000/api/auth/user/${userId}`);
+    
+    // 1. You must define 'result' (or 'user') here!
+    const result = await response.json(); 
+
+    if (response.ok) {
+        const nameElement = document.getElementById('menu-username');
+        if (nameElement) {
+            // 2. Now 'result' exists, so this won't crash
+            nameElement.textContent = result.username; 
+        }
+    }
+}

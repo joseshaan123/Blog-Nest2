@@ -1,14 +1,14 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const myId = localStorage.getItem("userId");
-    const myUsername = localStorage.getItem("username");
-    const myEmail = localStorage.getItem("email");
+    const idMyn = localStorage.getItem("userId");
+    const userNameMyn = localStorage.getItem("username");
+    const emailMyn = localStorage.getItem("email");
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const targetUserId = urlParams.get('user');
-    const isOwner = !targetUserId || targetUserId === myId;
-    const userIdToLoad = isOwner ? myId : targetUserId;
+    const paramUrl = new URLSearchParams(window.location.search);
+    const useridTarget = paramUrl.get('user');
+    const ownerIs = !useridTarget || useridTarget === idMyn;
+    const loadUserId = ownerIs ? idMyn : useridTarget;
 
-    if (!userIdToLoad) { window.location.href = "login.html"; return; }
+    if (!loadUserId) { window.location.href = "login.html"; return; }
 
     const usernameElement = document.getElementById("display-username");
     
@@ -16,24 +16,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     const ownerSection = document.getElementById("owner-only-section");
     const createBlogBtn = document.getElementById("blog-create");
 
-    if (isOwner) {
+    if (ownerIs) {
+       const res = await fetch(`http://localhost:3000/api/auth/user/${idMyn}`);
+        const data = await res.json();
+        //call user api set data
         if (ownerSection) ownerSection.style.display = "block";
-        if (usernameElement) usernameElement.textContent = `${myUsername}`;
-       
+        if (usernameElement && data) {
+            usernameElement.textContent = `${data.username}`;
+            document.getElementById('profile-trigger').src = `http://localhost:3000${data.profilePic}`;  
+            document.getElementById("menu-username").textContent = data.username;
+            document.getElementById("menu-email").textContent = data.email;   
+        }
     } else {
         if (createBlogBtn) createBlogBtn.style.display = "none";
         try {
-            const res = await fetch(`http://localhost:3000/api/auth/user/${targetUserId}`);
+            const res = await fetch(`http://localhost:3000/api/auth/user/${useridTarget}`);
             const data = await res.json();
             if (usernameElement) usernameElement.textContent = `${data.username}'s Profile`;
             
         } catch (err) { console.error(err); }
     }
 
-    fetchUserBlogs(userIdToLoad, blogsContainer, isOwner);
+    fetchUserBlogs(loadUserId, blogsContainer, ownerIs);
 });
 
-async function fetchUserBlogs(userId, container, isOwner) {
+async function fetchUserBlogs(userId, container, ownerIs) {
     const res = await fetch(`http://localhost:3000/api/blogs/user/${userId}`);
     const blogs = await res.json();
     container.innerHTML = blogs.length === 0 ? "<p>No blogs yet.</p>" : "";
@@ -43,7 +50,7 @@ async function fetchUserBlogs(userId, container, isOwner) {
         blogCard.className = "blog-card";
         
 
-        let actionButtons = isOwner ? `
+        let actionButtons = ownerIs ? `
             <div class="action-button">
                 <button onclick="window.location.href='texteditor.html?edit=${blog._id}'"  id=edit>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
@@ -103,8 +110,7 @@ function toggleDropdown() {
     dropdown.classList.toggle("show");
     
     // Fill the data from localStorage when opened
-    document.getElementById("menu-username").textContent = localStorage.getItem("username") || "Guest";
-    document.getElementById("menu-email").textContent = localStorage.getItem("email") || "";
+    
 }
 
 // Close the dropdown if the user clicks anywhere else on the screen

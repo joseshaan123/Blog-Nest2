@@ -7,14 +7,14 @@
    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <header>
+    <header  id="home">
     <h1 id="main">BLOG<br>NEST</h1>
     <nav>
-    <a href="signin.html" class="hideOnMobile"><button class="headerbtn" id="head1" >login</button></a>
-    <a href="signin.html" class="hideOnMobile"><button class="headerbtn" id="head2" >Sign up</button></a>
-    <a href="#about" class="hideOnMobile"><button class="headerbtn" id="head3" >About Us</button></a>
-    <a href="#contact" class="hideOnMobile"><button class="headerbtn" id="head4" >Contact Us</button></a>
-    <a href="#" ><button  class="menubutton" onclick=showSidebar()><svg xmlns="http://www.w3.org/2000/svg" height="24" width="40" viewBox="0 0 24 24" fill="currentColor">
+    <a href="signin.html" class="hidden-nav"><button class="button-header" id="header-1" >login</button></a>
+    <a href="signin.html" class="hidden-nav"><button class="button-header" id="header-2" >Sign up</button></a>
+    <a href="#about" class="hidden-nav"><button class="button-header" id="header-3" >About Us</button></a>
+    <a href="#contact" class="hidden-nav"><button class="button-header" id="header-4" >Contact Us</button></a>
+    <a href="#" ><button  class="button-menu" onclick=displaysideContainer()><svg xmlns="http://www.w3.org/2000/svg" height="24" width="40" viewBox="0 0 24 24" fill="currentColor">
   <path d="M3 6h18a1 1 0 0 0 0-2H3a1 1 0 0 0 0 2zm18 5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2zm0 7H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2z"/>
 </svg>
 
@@ -22,14 +22,14 @@
 </a>
     </nav>
     </header>
-    <nav class="sidebar">
-     <a href="#"  onclick=hideSidebar()><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="currentColor">
+    <nav class="sideContainer">
+     <a href="#"  onclick=sideContainerHidden()><svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24" fill="currentColor">
       <path d="M18.3 5.71a1 1 0 0 0-1.41 0L12 10.59 7.11 5.7A1 1 0 1 0 5.7 7.11L10.59 12l-4.9 4.89a1 1 0 1 0 1.41 1.41L12 13.41l4.89 4.9a1 1 0 0 0 1.41-1.42L13.41 12l4.89-4.89a1 1 0 0 0 0-1.4z"/>
     </svg></a>
-    <a href="signin.html"><button class="headerbtn" id="head1">login</button></a>
-    <a href="signin.html"><button class="headerbtn" id="head2">Sign up</button></a>
-    <a href="#about"><button class="headerbtn" id="head2">About Us</button></a>
-    <a href="#contact"><button class="headerbtn" id="head2">Contact Us</button></a>
+    <a href="signin.html"><button class="button-header" id="header-1">login</button></a>
+    <a href="signin.html"><button class="button-header" id="header-2">Sign up</button></a>
+    <a href="#about"><button class="button-header" id="header-3">About Us</button></a>
+    <a href="#contact"><button class="button-header" id="header-4">Contact Us</button></a>
     
     </nav>
 <div class="container1">
@@ -42,7 +42,7 @@
      </div>
 </div>
 
-<div class="container2">
+<div class="container2"  id="signup">
     <h2>WANT TO CREATE YOUR OWN BLOG?</h2>
     <p>NEW TO BLOG NEST?</p>
     <button><a href="signin.html">Sign Up</a></button>
@@ -51,64 +51,29 @@
     <video  autoplay muted loop class="bg-video"><source src="/frontend/videos/6781547-uhd_3840_2160_30fps.mp4"></video>
 </div>
 
-<div class="container4">
-  <div class="in-container4">
-   <h1>OUR LATEST HITS</h1>
-   <div class="in-container4-sub">
-    <h1>The top Trending in Our Site</h1>
-    <div class="in-container4-boxes">
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
-      <div>5</div>
-      <div>6</div>
-      <div>7</div>
-        <div>8</div>
-      <div>9</div>
-        <div>10</div>
-      <div>11</div>
-
-       <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
-      <div>5</div>
-      <div>6</div>
-      <div>7</div>
-        <div>8</div>
-      <div>9</div>
-        <div>10</div>
-      <div>11</div>
-    </div>
- 
-   </div>
-  </div>
-</div>
 
 <div class="container3 reveal" id="about">
     <h2>WHY CHOOSE BLOG NEST?</h2>
     
-    <div class="why-choose-us-box">
-        <div class="content-stage">
-            
-            <div class="slot image-slot">
-                <img id="blog-img" src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg" alt="Blog Feature">
+    <div class="in-container3">
+        <div class="imgtext-container">
+            <div class="slot-div img-div">
+                <img id="slot-img" src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg" alt="Blog Feature">
             </div>
             
             <div class="text-group">
-                <div class="slot head-slot">
-                    <h1 id="blog-head">Edit Anytime</h1>
+                <div class="slot-div head-slot">
+                    <h1 id="slot-heading">Edit Anytime</h1>
                 </div>
-                <div class="slot para-slot">
-                    <p id="blog-para">
+                <div class="slot-div para-slot">
+                    <p id="slot-text">
                         Your blogs are always under your control. Made a typo? Changed your mind? No problem! BlogNest lets you revisit, update, or even delete your blogs anytime you wish. With full editing freedom, you can keep your content fresh, relevant, and exactly how you want it to be.
                     </p>
                 </div>
             </div>
         </div>
 <div class="arrow-control">
-            <button id="next-blog" class="round-arrow">
+            <button id="next-btn" class="round-arrow">
                 <span>↓</span>
             </button>
         </div>
@@ -151,6 +116,19 @@
   </div>
 
 </div>
+
+<footer>
+<h1 id="main">BLOG<br>NEST</h1>
+<p>The Space for sharing your thoughts, your ideas, and creativity.</p>
+<div class="footernavs">
+<a href="#home"><button>Home</button></a>
+<a href="#signup"><button>Sign Up</button></a>
+<a href="#signup"><button>Login</button></a>
+<a href="#about"><button>About Us</button></a>
+<a href="#contact"><button>Contact Us</button></a>
+</div>
+<p class="footerp">© 2026 Blog-Nest. All rights reserved. | Privacy Policy | Terms of Service |</p>
+</footer>
     
  <script src="index.js">
  

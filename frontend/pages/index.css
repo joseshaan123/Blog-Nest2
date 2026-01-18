@@ -40,27 +40,30 @@ h1{
 li{
     display: flex;
 }
-.headerbtn{
+.button-header{
+    font-family: "Libre";
     background-color: #1dba3c;
   font-family: "Libre";
    font-size: clamp(1.1rem,0.2vw, 3rem);
+    border-radius: 20px;
    height: 30px;
+   font-weight: 300;
    border: 1px solid white;
-   border-radius: 20px;
+  
    padding-left: 10px;
    padding-right: 10px;
    margin-right: 20px;
    color: white;
-   font-weight: 300;
+   
 }
-.headerbtn:hover{
+.button-header:hover{
     background-color: white;
     color:green;
     border:1px solid #1dba3c;
     font-weight: 500;
     z-index: -1;
 }
-.sidebar{
+.sideContainer{
     position: fixed;
     height: 100vh;
     width: 250px;
@@ -77,13 +80,13 @@ li{
     
     
 }
-.sidebar .headerbtn{
+.sideContainer .button-header{
     color: black;
    
     background-color:rgba(255, 255, 255, 0.548) ;
 
 }
-.menubutton{
+.button-menu{
     display: none;
 }
 .container1{
@@ -97,16 +100,16 @@ li{
     max-width: 80%;
 }
 @media(max-width:800px){
-    .hideOnMobile{
+    .hidden-nav{
         display: none;
     }
-    .menubutton{
+    .button-menu{
         display: flex;
     }
 
 }
 @media(max-width:400px){
-    .sidebar{
+    .sideContainer{
         width: 100%;
         display: flex;
        align-items: center;
@@ -208,68 +211,7 @@ li{
     text-decoration: none;
 }
 
-.container4{
- display: flex;
- height: 100vh;
- width: 100%;   
- align-items: center;
- justify-content: center;
-}
-.in-container4{
-  background-image: url('/frontend/images/container4bg.jpg');
-  background-size: 100% 100%;
-   width: 80%;
-  
-   height: 90vh; 
-   border-radius: 50px;
-   background-color: aliceblue;
-   gap: 0;
-}
-.in-container4::before{
 
-    background: rgba(0,0,0,0.5);
-    z-index: 1;
-}
-.in-container4 h1{
-font-size: 2rem;
-text-align: center;
-margin-top: 20px;
-color: rgb(255, 255, 255);
-height: 200px;
-
-
-
-}
-.in-container4-sub{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-}
-.in-container4-sub h1{
-    font-size: 2.5rem;
-    filter: brightness(100%);
-    color: white;
-    text-align: left;
-    width: 400px;
-    margin-left: 20px;
-}
-.in-container4-boxes{
- display: flex;
- flex-direction: row;
- overflow-x: scroll;
- gap: 20px;
-
-}
-@keyframes scroll{
-     0%   { transform: translateX(0); }
-  100% { transform: translateX(-4600px); }
-} 
-.in-container4-boxes div{
-    background-color: #5E4242;
-    width: 400px;
-    flex-shrink: 0;
-     animation: scroll 20s linear infinite;
-}
 .container5{
     display: flex;
     flex-direction: column;
@@ -316,18 +258,18 @@ border: 20px solid transparent;
 }
 
 /* 1. Core Slide Logic (Upward Motion) */
-.slot { overflow: hidden; }
+.slot-div{ overflow: hidden; }
 
-@keyframes slideUpOut {
+@keyframes slide-out-up {
     to { transform: translateY(-100%); opacity: 0; }
 }
-@keyframes slideUpIn {
+@keyframes slide-down-in {
     from { transform: translateY(100%); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
 
-.slide-up-out { animation: slideUpOut 0.5s forwards ease-in; }
-.slide-up-in { animation: slideUpIn 0.5s forwards ease-out; }
+.nav-up { animation: slide-out-up 0.5s forwards ease-in; }
+.nav-down-up { animation: slide-down-in 0.5s forwards ease-out; }
 
 .container3{
     padding: 20px;
@@ -340,7 +282,7 @@ border: 20px solid transparent;
     
 }
 /* 2. The Main Container (75vh height) */
-.why-choose-us-box {
+.in-container3 {
     background: rgba(255, 255, 255, 0.907); 
     border: 2px solid #1dba3c ;
     border-radius: 20px;
@@ -354,7 +296,7 @@ border: 20px solid transparent;
 }
 
 /* 3. The Content Stage (Side-by-Side) */
-.content-stage {
+.imgtext-container {
     display: flex;
     flex-direction: row; 
     width: 100%;
@@ -363,14 +305,14 @@ border: 20px solid transparent;
 }
 
 /* 4. Left Side: Image */
-.image-slot {
+.img-div {
     flex: 1;
     height: 100%;
     display: flex;
     align-items: center;
 }
 
-.image-slot img {
+.img-div img {
     width: 100%;
     height: 80%; /* Takes up most of the 75vh height */
     object-fit: cover; /* Prevents stretching */
@@ -428,6 +370,8 @@ border: 20px solid transparent;
 .container6{
     width: 100%;
     margin-top: 50px;
+     height: auto; 
+    min-height: 70vh;
 }
 .in-container6{
     display: flex;
@@ -472,6 +416,41 @@ border: 20px solid transparent;
     color: white;
     
 }
+footer{
+    background-color: #1dba3c;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    
+}
+footer h1{
+    margin-bottom: 0;
+}
+footer p{
+    font-size: clamp(0.8rem,4vw,1.2rem);
+    font-family: "Josephin";
+}
+.footernavs button{
+    background-color: #1dba3c;
+    border: 0;
+    font-size: clamp(1rem,4vw,1.3rem);
+    padding: 10px 10px 8px 8px;
+
+    color: white;
+}
+
+.footernavs button:hover{
+    background-color: #1dba3c;
+    border: 2px solid white;
+
+}
+.footerp{
+    font-size: clamp(0.5rem,3vw,1rem);
+    margin: 15px;
+}
+
 @media(max-width:1024px){
 
     .container1{
@@ -508,7 +487,7 @@ border: 20px solid transparent;
     
 }
 /* 2. The Main Container (75vh height) */
-.why-choose-us-box {
+.in-container3 {
     background: rgba(255, 255, 255, 0.907); 
     border: 2px solid #1dba3c ;
     border-radius: 20px;
@@ -522,7 +501,7 @@ border: 20px solid transparent;
 }
 
 /* 3. The Content Stage (Side-by-Side) */
-.content-stage {
+.imgtext-container {
     display: flex;
     flex-direction: row; 
     width: 100%;
@@ -531,14 +510,14 @@ border: 20px solid transparent;
 }
 
 /* 4. Left Side: Image */
-.image-slot {
+.img-div {
     flex: 1;
     height: 100%;
     display: flex;
     align-items: center;
 }
 
-.image-slot img {
+.img-div img {
     width: 100%;
     height: 80%; /* Takes up most of the 75vh height */
     object-fit: cover; /* Prevents stretching */
@@ -611,7 +590,7 @@ border: 20px solid transparent;
     
 }
 /* 2. The Main Container (75vh height) */
-.why-choose-us-box {
+.in-container3 {
     background: rgba(255, 255, 255, 0.907); 
     border: 2px solid #1dba3c ;
     border-radius: 20px;
@@ -626,7 +605,7 @@ border: 20px solid transparent;
 }
 
 /* 3. The Content Stage (Side-by-Side) */
-.content-stage {
+.imgtext-container {
     display: flex;
     flex-direction:column; 
     width: 100%;
@@ -635,7 +614,7 @@ border: 20px solid transparent;
 }
 
 /* 4. Left Side: Image */
-.image-slot {
+.img-div {
     flex: 1;
     height: 100%;
     width: 100%;
@@ -643,7 +622,7 @@ border: 20px solid transparent;
     align-items: center;
 }
 
-.image-slot img {
+.img-div img {
     width: 100%;
     height: 100%; /* Takes up most of the 75vh height */
     object-fit: cover; /* Prevents stretching */
@@ -792,7 +771,9 @@ border: 20px solid transparent;
 .container6{
     width: 100%;
     margin-top: 50px;
-    height: 70vh;
+    
+    height: auto; 
+    min-height: 70vh;
 }
 .in-container6{
     display: flex;
@@ -841,7 +822,7 @@ border: 20px solid transparent;
     color: white;
     
 }
-.why-choose-us-box {
+.in-container3 {
     background: rgba(255, 255, 255, 0.907); 
     border: 2px solid #1dba3c ;
     border-radius: 20px;
@@ -855,6 +836,37 @@ border: 20px solid transparent;
     display: flex;
     flex-direction: column;
     overflow: hidden;
+}
+footer{
+    clear: both;
+    background-color: #1dba3c;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+footer h1{
+    margin-bottom: 0;
+}
+footer p{
+    font-size: clamp(0.8rem,3vw,1.2rem);
+    font-family: "Josephin";
+    text-align: center;
+    margin: 10px;
+}
+.footernavs button{
+    background-color: #1dba3c;
+    border: 0;
+    font-size: clamp(1rem,4vw,1.3rem);
+    padding: 10px 10px 8px 8px;
+
+    color: white;
+}
+.footernavs button:hover{
+    background-color: #1dba3c;
+    border: 2px solid white;
+
 }
 
 

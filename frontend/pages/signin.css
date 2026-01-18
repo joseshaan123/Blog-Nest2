@@ -177,7 +177,7 @@ font-family: "inter";
 }
 
 #formLogin input{
-
+    padding-left: 10px;
     height: 30px;
     width: 300px;
     border-radius: 20px;

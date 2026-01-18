@@ -64,7 +64,7 @@ router.post("/login", async (req, res) => {
         req.session.userId = user._id;
         req.session.username = user.username;
         
-        res.cookie("username", user.username, {
+        res.cookie("name-user", user.username, {
             maxAge: 1000 * 60 * 15, 
             httpOnly: true, 
         });
@@ -141,4 +141,49 @@ router.put("/update/:id", upload.single('profilePic'), async (req, res) => {
 });
 
 // IMPORTANT: ONLY ONE EXPORT AT THE VERY BOTTOM
+module.exports = router;
+
+/* --- 4. THE UNIFIED UPDATE ROUTE --- */
+router.put("/update/:id", upload.single('profilePic'), async (req, res) => {
+    // ... (Your existing update code)
+});
+
+router.post("/ask-ai", async (req, res) => {
+    try {
+        const { promptText } = req.body;
+        const apiKey = process.env.GEMINI_API_KEY;
+
+        if (!apiKey) {
+            return res.status(500).json({ output: "Server Error: API Key missing in .env" });
+        }
+
+        // Updated to gemini-2.5-flash for 2026 compatibility
+        const response = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
+            {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: promptText }] }]
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        // Check if Google sent an error (like "Invalid Key")
+        if (data.error) {
+            console.error("Gemini API Error:", data.error.message);
+            return res.status(400).json({ output: "AI Error: " + data.error.message });
+        }
+
+        const aiText = data?.candidates?.[0]?.content?.parts?.[0]?.text || "No response from AI.";
+        res.json({ output: aiText });
+
+    } catch (err) {
+        console.error("AI Proxy Error:", err);
+        res.status(500).json({ output: "Could not connect to AI service" });
+    }
+});
+
 module.exports = router;

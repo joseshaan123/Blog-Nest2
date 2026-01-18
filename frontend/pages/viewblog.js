@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const blogId = urlParams.get('id');
+    const paramUrl = new URLSearchParams(window.location.search);
+    const blogId = paramUrl.get('id');
 
     const titleEl = document.getElementById("blog-title");
     const contentEl = document.getElementById("blog-content");

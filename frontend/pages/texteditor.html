@@ -13,18 +13,21 @@
     <h1>BLOG<br>NEST</h1>
     <nav>
     <div class="profile-container">
-    <img src="default-profile.png" alt="Profile" id="profile-trigger" onclick="toggleDropdown()">
-
+    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Profile" id="profile-trigger" onclick="toggleDropdown()">
+    
     <div id="profile-dropdown" class="dropdown-content">
         <div class="user-info">
             <p id="menu-username">Username</p>
             <p id="menu-email">email@example.com</p>
         </div>
         <hr>
+        <button id="add-photo-btn">Add Profile Picture</button>
+<input type="file" id="hidden-file-input" style="display: none;" accept="image/*">
         <a href="profile.html">My Profile</a>
         <a href="edit-profile.html">Edit Profile</a>
         <button id="logout-btn" onclick="logoutUser()">Logout</button>
     </div>
+</div>
     <a href="index.html" class="hideOnMobile"><button class="headerbtn" id="head3" >About Us</button></a>
     <a href="" class="hideOnMobile"><button class="headerbtn" id="head3" >About Us</button></a>
     <a href="index.html" class="hideOnMobile"><button class="headerbtn" id="head4" >Contact Us</button></a>
@@ -60,7 +63,30 @@
 
         <select name="" id="fontName" class="adv-option-button"></select>
     <select name="" id="fontSize" class="adv-option-button"></select>
-
+    <button id="underline" class="option-button format">
+            <i class="fa fa-underline" aria-hidden="true"></i>
+        </button>
+        <button id="strike-through" class="option-button-format">
+             <i class="fa fa-strikethrough" aria-hidden="true"></i>
+        </button>
+          <button id="strike-through" class="option-button-format">
+             <i class="fa fa-strikethrough" aria-hidden="true"></i>
+        </button>
+        <button id="superscript" class="option-format">
+            <i class="fa fa-superscript" aria-hidden="true"></i>
+        </button>
+        <button id="subscript" class="option-format">
+            <i class="fa fa-subscript" aria-hidden="true"></i>
+        </button>
+        <button id="insertOrderedList" class="option-button">
+            <i class="fa fa-list-ol" aria-hidden="true"></i>
+        </button>
+       <button id="insertUnorderedList" class="option-button">
+            <i class="fa fa-list-ul" aria-hidden="true"></i>
+        </button>
+    <button id="undo" class="option-button">
+         <i class="fa fa-undo" aria-hidden="true"></i>
+    </button>
     <div id="heading-input" contenteditable="true">
        <label for="">Your Heading</label>
     </div>
@@ -163,7 +189,9 @@
      <div id="text-input" contenteditable="true">
      <label for="">Your Text</label>
      </div>
-     <div id="resultBox"></div>
+     <div id="resultBox" class="result-box">
+
+     </div>
       </div>
      <button id="submit" type="button" onclick="submitBlog()">Submit</button>
     </div>
